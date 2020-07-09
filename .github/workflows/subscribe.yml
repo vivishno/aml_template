@@ -1,7 +1,7 @@
 # Test Actions create an event subscription to a function app
 name: create-event-subscription 
 on:
-  pull_request:
+  push:
 
 jobs:
   train:
@@ -19,6 +19,6 @@ jobs:
       with:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
           events_mapfile: "event_subscriptions.json"
-          resource_group: "checking6"
+          resource_group: "checking7"
           pattoken: ${{secrets.PAT_TOKEN}} 
           
