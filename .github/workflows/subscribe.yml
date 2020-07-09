@@ -15,10 +15,10 @@ jobs:
     # Deploys function app and creates an event grid subscription
     - name: create event subscription
       id: azure_eventgridsubscriber
-      uses: ./
+      uses: mlopstemplates/azure_eventgridsubscriber@master
       with:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
           events_mapfile: "event_subscriptions.json"
-          resource_group: "idc"
-          pattoken: ${{secrets.PATTOKEN}}
+          resource_group: "checking6"
+          pattoken: ${{secrets.PAT_TOKEN}}
           
