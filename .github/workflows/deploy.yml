@@ -1,7 +1,7 @@
 
 # Tests Actions to deploy ARM template to Azure
 name: arm-template-deploy
-on: [pull_request]
+on: [push]
 
 jobs:
   train:
@@ -19,5 +19,5 @@ jobs:
       with:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
           armtemplate_file: "deploy.json"
-          resource_group: "checking6"
+          resource_group: "checking7"
           deployment_mode: "Incremental"
