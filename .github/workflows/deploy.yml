@@ -1,7 +1,7 @@
 
 # Tests Actions to deploy ARM template to Azure
 name: arm-template-deploy
-on: [pull_request]
+on: [push]
 
 jobs:
   train:
@@ -15,9 +15,9 @@ jobs:
     # Connect or Create the Azure Machine Learning Workspace
     - name: deploy all resources
       id: aml_configure
-      uses: vivishno/aml_configure-1@master
+      uses: mlops/aml_configure@master
       with:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
           armtemplate_file: "deploy.json"
-          resource_group: "check9"
+          resource_group: "check10"
           deployment_mode: "Incremental"
