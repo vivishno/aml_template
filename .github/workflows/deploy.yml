@@ -15,9 +15,9 @@ jobs:
     # Connect or Create the Azure Machine Learning Workspace
     - name: deploy all resources
       id: aml_configure
-      uses: vivishno/aml_configure-1@master
+      uses: mlopstemplates/aml_configure@master
       with:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
           armtemplate_file: "deploy.json"
-          resource_group: "check10"
+          resource_group: "check11"
           deployment_mode: "Incremental"
