@@ -19,5 +19,5 @@ jobs:
       with:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
           armtemplate_file: "deploy.json"
-          resource_group: "test1"
+          resource_group: "test2"
           deployment_mode: "Incremental"
