@@ -11,13 +11,17 @@ jobs:
     - name: Check Out Repository
       id: checkout_repository
       uses: actions/checkout@v2
-         
-    # Connect or Create the Azure Machine Learning Workspace
-    - name: deploy all resources
-      id: aml_configure
-      uses: mlopstemplates/aml_configure@master
+
+    - name: deploy arm template
+      id: arm_deploy
+      uses: mlopstemplates/arm_deploy@master
       with:
-          azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
-          armtemplate_file: "deploy.json"
-          resource_group: "test2"
-          deployment_mode: "Incremental"
+          resource_group: "a0"
+          template_file: "/.cloud/.azure/deploy.json"
+          scope: "resource_group"
+   
+    - name: Display deployment output details
+      run: |
+          echo deployment_status: "${{ steps.sampletest_sub.outputs.deployment_status}}"
+          echo deployment_error: "${{ steps.sampletest_sub.outputs.deployment_error}}"
+  
