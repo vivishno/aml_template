@@ -11,6 +11,10 @@ jobs:
     - name: Check Out Repository
       id: checkout_repository
       uses: actions/checkout@v2
+      
+    - uses: azure/login@v1.1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: deploy arm template
       id: arm_deploy
@@ -18,6 +22,7 @@ jobs:
       with:
           resource_group: "a0"
           template_file: "/.cloud/.azure/deploy.json"
+          scope: "resource_group"
    
     - name: Display deployment output details
       run: |
