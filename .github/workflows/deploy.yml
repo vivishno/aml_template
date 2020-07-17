@@ -1,4 +1,3 @@
-
 # Tests Actions to deploy ARM template to Azure
 name: arm-template-deploy
 on: [push]
@@ -10,21 +9,20 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: Check Out Repository
       id: checkout_repository
-      uses: actions/checkout@master
-
+      uses: actions/checkout@v2
+      
     - uses: azure/login@v1.1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-    
+
     - name: deploy arm template
       id: arm_deploy
       uses: mlopstemplates/arm_deploy@master
       with:
-            resource_group: "t1"
-            template_file: "/.cloud/.azure/deploy.json"
-
+          resource_group: "t1"
+          template_file: "/.cloud/.azure/deploy.json"
+   
     - name: Display deployment output details
       run: |
-          echo deployment_status: "${{ steps.arm_deploy.outputs.deployment_parameters}}"
-          echo deployment_error: "${{ steps.arm_deploy.outputs.deployment_output}}"
-  
+          echo deployment_status: "${{ steps.sampletest_sub.outputs.deployment_status}}"
+          echo deployment_error: "${{ steps.sampletest_sub.outputs.deployment_error}}"
