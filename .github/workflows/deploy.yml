@@ -18,12 +18,10 @@ jobs:
     
     - name: deploy arm template
       id: arm_deploy
-      uses: vivishno/arm_deploy@master
+      uses: mlopstemplates/arm_deploy@master
       with:
             resource_group: "t1"
             template_file: "/.cloud/.azure/deploy.json"
-            parameter_file: "/.cloud/.azure/deploy.params.json"
-            mode: "Incremental"
 
     - name: Display deployment output details
       run: |
