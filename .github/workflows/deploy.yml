@@ -10,12 +10,12 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: Check Out Repository
       id: checkout_repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@master
 
 
     - name: deploy arm template
       id: arm_deploy
-      uses: mlopstemplates/aml_configure@master
+      uses: mlopstemplates/aml_configure@v1.0
       with:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
           armtemplate_file: "deploy.json"
