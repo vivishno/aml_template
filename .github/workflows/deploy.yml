@@ -13,15 +13,14 @@ jobs:
       uses: actions/checkout@master
 
 
-    - name: deploy arm template
-      id: arm_deploy
+    - name: deploy all resources
+      id: aml_configure
       uses: mlopstemplates/aml_configure@v1.0
       with:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
           armtemplate_file: "deploy.json"
           armtemplateparams_file: "deploy.params.json"
-          resource_group: "testG"
-          deployment_mode: "Incremental"
+          resource_group: ${{ secrets.AZURE_RESOURCE_GROUP }}
 
     - name: Display deployment output details
       run: |
