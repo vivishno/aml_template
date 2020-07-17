@@ -22,7 +22,6 @@ jobs:
       with:
           resource_group: "testG" 
           template_file: "/.cloud/.azure/deploy.json"
-          parameter_file: "/.cloud/.azure/deploy.params.json"
 
     - name: Display deployment output details
       run: |
