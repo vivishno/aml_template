@@ -15,7 +15,7 @@ jobs:
 
     - name: deploy arm template
       id: arm_deploy
-      uses: mlopstemplates/aml-configure@master
+      uses: mlopstemplates/aml_configure@master
       with:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
           armtemplate_file: "deploy.json"
