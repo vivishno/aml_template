@@ -23,8 +23,7 @@ jobs:
           resource_group: ${{ secrets.AZURE_RESOURCE_GROUP }} 
           template_file: "/.cloud/.azure/deploy.json"
           parameter_file: "/.cloud/.azure/deploy.params.json"
-          mode: "Incremental"
-          
+
     - name: Display deployment output details
       run: |
           echo deployment_status: "${{ steps.arm_deploy.outputs.deployment_status}}"
