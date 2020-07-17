@@ -1,0 +1,27 @@
+# Tests Actions to deploy ARM template to Azure
+name: arm-template-deploy
+on: [pull_request]
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: Check Out Repository
+      id: checkout_repository
+      uses: actions/checkout@v2
+         
+    # Connect or Create the Azure Machine Learning Workspace
+    - name: deploy all resources
+      id: aml_configure
+      uses: mlopstemplates/aml_configure@master
+      with:
+          azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
+          armtemplate_file: "arm_deploy.json"
+          resource_group: "testAction2"
+          deployment_mode: "Incremental"
+          
+    - name: Display deployment output details
+      run: |
+          echo deployment_status: "${{ steps.aml_configure.outputs.deployment_parameters}}"
+          echo deployment_error: "${{ steps.aml_configure.outputs.outputs}}"
