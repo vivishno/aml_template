@@ -19,8 +19,11 @@ jobs:
       id: arm_deploy
       uses: mlopstemplates/arm_deploy@master
       with:
-          resource_group: "a0"
+          scope: "resource_group"
+          resource_group: "test4"
           template_file: "/.cloud/.azure/deploy.json"
+          parameter_file: "/.cloud/.azure/deploy.params.json"
+          mode: "Incremental"
    
     - name: Display deployment output details
       run: |
